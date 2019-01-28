@@ -1,2 +1,2 @@
-# UTR_project
+# UTR project
 Scripts used for Lek Labs UTR project.
