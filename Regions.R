@@ -20,13 +20,13 @@ canonical_transcripts <- read_tsv("canonical_transcripts/human_canonical_transcr
                                   col_names = c("transcript"), 
                                   col_types = "c")
 
-
 # select protein coding canonical trancsripyts from gtf
 # seprate transcript version number for easier matching
 
 gtf_v2 <- gtf %>% separate(transcript_id, c("transcript", "version"), sep = "\\.")
 canonical_transcripts_v2 <- canonical_transcripts %>% separate(transcript, c("transcript", "version"), sep = "\\.")
 
+#write_tsv(canonical_transcripts_v2$transcript, canonical_tr_wo_versions.txt)
 
 prot_coding_canonical_v2 <- gtf_v2 %>% 
   filter(transcript_type == "protein_coding") %>% 
@@ -99,10 +99,14 @@ create_interval_files <- function(type, strand, df) {
 
 }
 
-create_interval_files(df = prot_coding_canonical_v3, type = 'UTR5', strand = '+')
-
 for (i in 1:length(types)) {
   create_interval_files(type = types[i], strand = strands[i], df = prot_coding_canonical_v3)
 }
 
 ## Now you have 15 files in your directory which serve as intervals for GATK select variants tool.
+
+# save gtf dataframe to be used as an input for other scripts.
+
+# write_tsv(prot_coding_canonical_v3, 'gtf_df_wUTRs_separated.tsv')
+
+
