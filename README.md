@@ -3,7 +3,7 @@ Scripts used for Lek Labs UTR project.
 
 ## General workflow
 
-_This analysis relies on canonical intervals, as defined in Ensemble; gnomad genomes dataset; gencode annotation v19, uORFs are extracted from from Gerstein lab paper https://doi.org/10.1093/nar/gky188. See comments in scripts for details_
+_This analysis relies on canonical intervals, as defined in Ensembl ensembl.org ; gnomAD genomes dataset https://gnomad.broadinstitute.org/; gencode annotation v19 https://www.gencodegenes.org/, uORFs are extracted from from Gerstein lab paper https://doi.org/10.1093/nar/gky188. See comments in scripts for details_
 
 1) Import gtf file, and separate UTR3s and UTR5s, then make GATK-compatible intervals files for each region of interest (UTR5, CDS, UTR3) `Regions.R`
 2) Download gnomad vcf file for genomes dataset, and select variants based on the regions defined in #1. `region_select.sh`
